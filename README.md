@@ -27,3 +27,7 @@ Plot the data using Gadfly https://towardsdatascience.com/gadfly-jl-the-pure-jul
 
 # Piecing
 Create another README.md once completed and put both files in zip archive.
+
+
+# getting zip file 
+wget https://www.ssa.gov/oact/babynames/names.zip
