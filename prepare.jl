@@ -9,18 +9,26 @@ using Tables
 zipName = ARGS[1]
 print(zipName, '\n')
 
+nameRgx = r"^yob.*\.txt$"
 
 rd = ZipFile.Reader(zipName)
-for file in rd.files 
-    println("Filename: $(file.name)")
+for file in rd.files
+    if match(nameRgx, file.name) !== nothing
+        println("Filename: $(file.name)")
+    end 
 end 
 close(rd)
 
-db = SQLite.DB("Baby_Names.sqlite")
+txtTocsv(file)
+    
 
-x = Tables.rows(x)
-Tables.istable(x)
-Tables.schema(x) = 
+# db = SQLite.DB("Baby_Names.sqlite")
 
-SQLite.createtable!(db, "hello",Tables.schema(x), temp=false, ifnotexists=true)
-println(db)
+# DBInterface.execute(db, "CREATE TABLE names (
+# year INTEGER,
+# name TEXT,
+# sex TEXT,
+# num INTEGER
+# )")
+# println(DBInterface.execute(db, "SELECT * FROM names"))
+# println(db)
