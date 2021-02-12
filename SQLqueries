@@ -4,3 +4,33 @@ from (select year, sum(names.num)
      group by names.year) as a left join (select * 
                                          from names 
                                          where names.name = "lia") b on a.year = b.year
+
+
+or we can do 
+
+
+select DISTINCT(names.year)
+from names
+
+//this gets total number per year as well
+select *
+from (select year, sum(names.num) as total
+     from names
+     group by names.year) as a, names
+where names.year = a.year and names.name = "Lia"
+order by a.year
+
+
+
+//this only gets num year pair
+select year, num 
+from names
+where names.name = "Lia"
+order by year
+
+//prob the best one
+select a.year, IFNULL(b.num, 0) as num
+from (select DISTINCT(names.year)
+     from names ) as a left join (select * 
+                                         from names 
+                                         where names.name = "Lia") b on a.year = b.year
