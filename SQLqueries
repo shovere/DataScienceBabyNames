@@ -1,0 +1,6 @@
+select * 
+from (select year, sum(names.num)
+     from names
+     group by names.year) as a left join (select * 
+                                         from names 
+                                         where names.name = "lia") b on a.year = b.year
