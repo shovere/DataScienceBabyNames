@@ -4,6 +4,7 @@ using SQLite
 using CSV
 using DataFrames
 
+
 zipName = ARGS[1]
 dbName = ARGS[2]
 nameRgx = r"^yob.*\.txt$"
